@@ -12,7 +12,7 @@
 <body>
     <div class="container mt-3">
         <h3>Hello, you're logging in as</h3>
-        <button class="btn btn-primary">Thêm mới</button>
+        <a href="/admin/user/add" class="btn btn-primary">Thêm mới</a>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -28,6 +28,7 @@
             </thead>
             <tbody>
                 <c:forEach items = "${users}" var="user">
+                <tr>
                     <td>${user.id}</td>
                     <td>${user.address}</td>
                     <td>${user.dob}</td>
@@ -36,10 +37,10 @@
                     <td>${user.phoneNumber}</td>
                     <td>${user.role.name}</td>
                     <td>
-                        <a class="btn btn-info">Chi tiết</a>
-                        <a class="btn btn-warning">Sửa</a>
-                        <a class="btn btn-danger">Xóa</a>
+                        <a href="/admin/user/edit/${user.id}" class="btn btn-warning">Sửa</a>
+                        <a href="/admin/user/delete/${user.id}" class="btn btn-danger">Xóa</a>
                     </td>
+                </tr>
                 </c:forEach>
             </tbody>
         </table

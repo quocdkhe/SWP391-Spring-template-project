@@ -12,7 +12,7 @@
     <div class="container mt-5">
         <h2>Edit user information</h2>
         <!-- Spring form tag with modelAttribute="user" -->
-        <form:form action="/admin/user/add" method="post" modelAttribute="user">
+        <form:form action="/admin/user/edit" method="post" modelAttribute="user">
             
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -41,12 +41,12 @@
             
             <div class="mb-3">
                 <label for="role" class="form-label">Role</label>
-                <form:select path="role.name" class="form-control">
+                <form:select path="role.name" class="form-select">
                     <form:option value="Admin">Admin</form:option>
                     <form:option value="User">User</form:option>
                 </form:select>
             </div>
-
+            <form:input path="id" hidden="true"/>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form:form>
     </div>
