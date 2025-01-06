@@ -2,6 +2,7 @@ package com.example.swp391.controller;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,17 +15,19 @@ import com.example.swp391.service.RoleService;
 import com.example.swp391.service.UserService;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class AdminController {
 
     private final UserService userService;
     private final RoleService roleService;
+    private final PasswordEncoder passwordEncoder;
 
-    public AdminController(UserService userService, RoleService roleService) {
+    public AdminController(UserService userService, RoleService roleService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.roleService = roleService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("admin/user")
@@ -44,6 +47,8 @@ public class AdminController {
     public String handleAddUser(@ModelAttribute User user) {
         Role role = roleService.findRoleByName(user.getRole().getName());
         user.setRole(role);
+        String hashPassword = this.passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashPassword);
         userService.handleSaveUser(user);
         return "redirect:/admin/user";
     }
@@ -66,5 +71,14 @@ public class AdminController {
         userService.handleSaveUser(currentUser);
         return "redirect:/admin/user";
     }
+
+    @GetMapping("admin/user/delete/{id}")
+    public String handleDeleteUser(@PathVariable int id) {
+        User user = new User();
+        user.setId(id);
+        userService.deleteUser(user);
+        return "redirect:/admin/user";
+    }
+    
 
 }
