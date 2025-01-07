@@ -16,38 +16,47 @@
             
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <form:input path="name" id="name" class="form-control" placeholder="Enter your name"  />
+                <form:input cssErrorClass="form-control is-invalid" path="name" id="name" cssClass="form-control" placeholder="Enter your name" />
+                <form:errors path="name" cssClass="invalid-feedback" /> 
             </div>
+
 
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <form:input path="username" id="username" class="form-control" placeholder="Enter a username"  />
+                <form:input cssErrorClass="form-control is-invalid" path="username" id="username" cssClass="form-control" placeholder="Enter a username" />
+                <form:errors path="username" cssClass="invalid-feedback" />
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <form:password path="password" id="password" class="form-control" placeholder="Enter a password"  />
+                <form:input type="password" cssErrorClass="form-control is-invalid" path="password" id="password" class="form-control" placeholder="Enter a password" />
+                <form:errors path="password" cssClass="invalid-feedback" />
             </div>
 
             <div class="mb-3">
                 <label for="dob" class="form-label">Date of Birth</label>
-                <form:input path="dob" id="dob" type="date" class="form-control"  />
+                <form:input cssErrorClass="form-control is-invalid" path="dob" id="dob" type="date" class="form-control" />
+                <form:errors path="dob" cssClass="invalid-feedback" />
             </div>
 
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
-                <form:input path="address" id="address" class="form-control" placeholder="Enter your address"  />
+                <form:input cssErrorClass="form-control is-invalid" path="address" id="address" class="form-control" placeholder="Enter your address" />
+                <form:errors path="address" cssClass="invalid-feedback" />
             </div>
 
             <div class="mb-3">
                 <label for="phoneNumber" class="form-label">Phone Number</label>
-                <form:input path="phoneNumber" id="phoneNumber" class="form-control" placeholder="Enter your phone number"  />
+                <form:input cssErrorClass="form-control is-invalid" path="phoneNumber" id="phoneNumber" class="form-control" placeholder="Enter your phone number" />
+                <form:errors path="phoneNumber" cssClass="invalid-feedback" />
             </div>
 
             <div class="mb-3">
                 <label for="job" class="form-label">Job</label>
-                <form:input path="job" id="job" class="form-control" placeholder="Enter your job"  />
+                <form:input cssErrorClass="form-control is-invalid" path="job" id="job" class="form-control" placeholder="Enter your job" />
+                <form:errors path="job" cssClass="invalid-feedback" />
             </div>
+
             
             <div class="mb-3">
                 <label for="role" class="form-label">Role</label>

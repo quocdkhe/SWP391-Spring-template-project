@@ -2,6 +2,7 @@ package com.example.swp391.domain;
 
 import java.sql.Date;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +11,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -18,21 +22,29 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     private Date dob;
 
     @Column(columnDefinition = "nvarchar(255)")
+    @NotEmpty(message = "àhwoeifoiwejfowejoifj")
     private String name;
 
+    @NotEmpty(message = "Username cannot be empty")
     private String username;
 
+    @NotEmpty
+    @Size(min = 6, message = "Password must be at least 6 characters in length")
     private String password;
 
     @Column(columnDefinition = "nvarchar(255)")
+    @NotEmpty
     private String address;
 
+    @NotEmpty(message = "Phone cannot be empty")
     private String phoneNumber;
 
     @Column(columnDefinition = "nvarchar(255)")
+    @NotEmpty(message = "Job cannot be empty")
     private String job;
 
     @ManyToOne

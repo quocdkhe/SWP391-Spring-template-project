@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +15,14 @@ import com.example.swp391.domain.User;
 import com.example.swp391.service.RoleService;
 import com.example.swp391.service.UserService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+@RequestMapping("admin")
 public class AdminController {
 
     private final UserService userService;
@@ -30,21 +35,24 @@ public class AdminController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("admin/user")
+    @GetMapping("/user")
     public String getUserManagerPage(Model model) {
         List<User> userList = userService.getAllUsers();
         model.addAttribute("users", userList);
         return "admin/userManager";
     }
 
-    @GetMapping("admin/user/add")
+    @GetMapping("/user/add")
     public String getAddUserPage(Model model) {
         model.addAttribute("user", new User());
         return "admin/addUser";
     }
 
-    @PostMapping("admin/user/add")
-    public String handleAddUser(@ModelAttribute User user) {
+    @PostMapping("/user/add")
+    public String handleAddUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "/admin/addUser";
+        }
         Role role = roleService.findRoleByName(user.getRole().getName());
         user.setRole(role);
         String hashPassword = this.passwordEncoder.encode(user.getPassword());
@@ -53,14 +61,14 @@ public class AdminController {
         return "redirect:/admin/user";
     }
 
-    @GetMapping("admin/user/edit/{id}")
-    public String getEditUserPage(@PathVariable int id, Model model) {
+    @GetMapping("/user/edit/{id}")
+    public String getUpdateUserPage(@PathVariable int id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "admin/editUser";
     }
 
-    @PostMapping("admin/user/edit")
+    @PostMapping("/user/edit")
     public String handleUpdateUser(@ModelAttribute User user) {
         User currentUser = userService.getUserById(user.getId());
         currentUser.setName(user.getName());
@@ -72,7 +80,7 @@ public class AdminController {
         return "redirect:/admin/user";
     }
 
-    @GetMapping("admin/user/delete/{id}")
+    @GetMapping("/user/delete/{id}")
     public String handleDeleteUser(@PathVariable int id) {
         User user = new User();
         user.setId(id);

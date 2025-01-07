@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container mt-3">
-        <h3>Hello, you're logging in as</h3>
+        <h3>User manager</h3>
         <a href="/admin/user/add" class="btn btn-primary">Thêm mới</a>
         <table class="table table-hover">
             <thead>
@@ -43,7 +43,7 @@
                 </tr>
                 </c:forEach>
             </tbody>
-        </table
+        </table>
     </div>
 </body>
 </html>
