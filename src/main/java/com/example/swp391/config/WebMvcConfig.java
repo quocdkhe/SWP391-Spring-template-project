@@ -27,9 +27,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // NOTE 'order' and 'viewNames' are optional
         viewResolver.setOrder(1);
         viewResolver.setViewNames(new String[] { ".html", ".xhtml" });
-        viewResolver.setCharacterEncoding("UTF-8"); // <- this was added
-        viewResolver.setForceContentType(true); // <- this was added
-        viewResolver.setContentType("text/html; charset=UTF-8"); // <- this was added
+        viewResolver.setCharacterEncoding("UTF-8"); 
         return viewResolver;
     }
 
@@ -51,6 +49,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         templateResolver.setSuffix(".html");
         // HTML is the default value, added here for the sake of clarity.
         templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("UTF-8");
         // Template cache is true by default. Set to false if you want
         // templates to be automatically updated when modified.
         templateResolver.setCacheable(true);
