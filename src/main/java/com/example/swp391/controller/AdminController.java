@@ -71,7 +71,10 @@ public class AdminController {
     }
 
     @PostMapping("/user/edit")
-    public String handleUpdateUser(@ModelAttribute User user) {
+    public String handleUpdateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "admin/editUser";
+        }
         User currentUser = userService.getUserById(user.getId());
         currentUser.setName(user.getName());
         currentUser.setAddress(user.getAddress());

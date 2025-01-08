@@ -17,49 +17,47 @@
     <h2>Edit user</h2>
     <form action="/admin/user/edit" method="post" th:object="${user}">
 
-      <input th:field="*{id}" hidden="true"/>
+      <input th:field="*{id}" hidden="true" />
 
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <input th:field="*{name}" id="name" class="form-control" placeholder="Enter your name"
-          th:classappend="${#fields.hasErrors('name')}? 'is-invalid' : ''" />
+          th:class="${#fields.hasErrors('name') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
       </div>
 
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input th:field="*{username}" id="username" class="form-control" placeholder="Enter a username"
-          th:classappend="${#fields.hasErrors('username')}? 'is-invalid' : ''" />
+          th:class="${#fields.hasErrors('username') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
       </div>
-
-      <!-- Password field removed to avoid changes -->
 
       <div class="mb-3">
         <label for="dob" class="form-label">Date of Birth</label>
         <input type="date" th:field="*{dob}" id="dob" class="form-control"
-          th:classappend="${#fields.hasErrors('dob')}? 'is-invalid' : ''" />
+          th:class="${#fields.hasErrors('dob') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></div>
       </div>
 
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
         <input th:field="*{address}" id="address" class="form-control" placeholder="Enter your address"
-          th:classappend="${#fields.hasErrors('address')}? 'is-invalid' : ''" />
+          th:class="${#fields.hasErrors('address') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
       </div>
 
       <div class="mb-3">
         <label for="phoneNumber" class="form-label">Phone Number</label>
         <input th:field="*{phoneNumber}" id="phoneNumber" class="form-control" placeholder="Enter your phone number"
-          th:classappend="${#fields.hasErrors('phoneNumber')}? 'is-invalid' : ''" />
+          th:class="${#fields.hasErrors('phoneNumber') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
       </div>
 
       <div class="mb-3">
         <label for="job" class="form-label">Job</label>
         <input th:field="*{job}" id="job" class="form-control" placeholder="Enter your job"
-          th:classappend="${#fields.hasErrors('job')}? 'is-invalid' : ''" />
+          th:class="${#fields.hasErrors('job') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('job')}" th:errors="*{job}"></div>
       </div>
 
