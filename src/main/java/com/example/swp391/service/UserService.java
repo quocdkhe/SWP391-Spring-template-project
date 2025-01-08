@@ -32,6 +32,6 @@ public class UserService {
     }
 
     public boolean checkExistedUsername(String username){
-        return userRepository.findByUsername(username) == null;
+        return userRepository.findByUsername(username) != null;
     }
 }

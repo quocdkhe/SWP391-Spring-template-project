@@ -21,49 +21,49 @@
 
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input th:field="*{name}" id="name" class="form-control" placeholder="Enter your name"
+        <input th:field="*{name}" id="name" class="form-control" placeholder="Enter your name" required
           th:class="${#fields.hasErrors('name') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
       </div>
 
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
-        <input th:field="*{username}" id="username" class="form-control" placeholder="Enter a username"
+        <input th:field="*{username}" id="username" class="form-control" placeholder="Enter a username" required
           th:class="${#fields.hasErrors('username') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
       </div>
 
       <div class="mb-3">
         <label for="dob" class="form-label">Date of Birth</label>
-        <input type="date" th:field="*{dob}" id="dob" class="form-control"
+        <input type="date" th:field="*{dob}" id="dob" class="form-control" required
           th:class="${#fields.hasErrors('dob') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></div>
       </div>
 
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
-        <input th:field="*{address}" id="address" class="form-control" placeholder="Enter your address"
+        <input th:field="*{address}" id="address" class="form-control" placeholder="Enter your address" required
           th:class="${#fields.hasErrors('address') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
       </div>
 
       <div class="mb-3">
         <label for="phoneNumber" class="form-label">Phone Number</label>
-        <input th:field="*{phoneNumber}" id="phoneNumber" class="form-control" placeholder="Enter your phone number"
+        <input th:field="*{phoneNumber}" id="phoneNumber" class="form-control" placeholder="Enter your phone number" required
           th:class="${#fields.hasErrors('phoneNumber') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
       </div>
 
       <div class="mb-3">
         <label for="job" class="form-label">Job</label>
-        <input th:field="*{job}" id="job" class="form-control" placeholder="Enter your job"
+        <input th:field="*{job}" id="job" class="form-control" placeholder="Enter your job" required
           th:class="${#fields.hasErrors('job') ? 'form-control is-invalid' : 'form-control'}" />
         <div class="invalid-feedback" th:if="${#fields.hasErrors('job')}" th:errors="*{job}"></div>
       </div>
 
       <div class="mb-3">
         <label for="role" class="form-label">Role</label>
-        <select th:field="*{role.name}" class="form-control">
+        <select th:field="*{role.name}" class="form-select">
           <option value="Admin">Admin</option>
           <option value="User">User</option>
         </select>

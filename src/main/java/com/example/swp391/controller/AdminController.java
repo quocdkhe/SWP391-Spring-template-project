@@ -19,9 +19,6 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 @Controller
 @RequestMapping("admin")
@@ -52,7 +49,7 @@ public class AdminController {
 
     @PostMapping("/user/add")
     public String handleAddUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "/admin/addUser";
         }
         Role role = roleService.findRoleByName(user.getRole().getName());
@@ -71,10 +68,7 @@ public class AdminController {
     }
 
     @PostMapping("/user/edit")
-    public String handleUpdateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
-            return "admin/editUser";
-        }
+    public String handleUpdateUser(@ModelAttribute("user") User user) {
         User currentUser = userService.getUserById(user.getId());
         currentUser.setName(user.getName());
         currentUser.setAddress(user.getAddress());
@@ -97,7 +91,5 @@ public class AdminController {
     public String getMethodName() {
         return "admin/index";
     }
-    
-    
 
 }
