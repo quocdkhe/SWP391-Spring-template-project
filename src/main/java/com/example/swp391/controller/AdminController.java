@@ -19,6 +19,8 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -87,6 +89,12 @@ public class AdminController {
         userService.deleteUser(user);
         return "redirect:/admin/user";
     }
+
+    @GetMapping("/blank")
+    public String getMethodName() {
+        return "admin/index";
+    }
+    
     
 
 }
