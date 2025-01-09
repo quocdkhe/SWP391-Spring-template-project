@@ -18,10 +18,8 @@ import com.example.swp391.service.UserService;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("admin")
 public class AdminController {
 
     private final UserService userService;
@@ -34,20 +32,20 @@ public class AdminController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/user")
+    @GetMapping("admin/user")
     public String getUserManagerPage(Model model) {
         List<User> userList = userService.getAllUsers();
         model.addAttribute("users", userList);
         return "admin/userManager";
     }
 
-    @GetMapping("/user/add")
+    @GetMapping("admin/user/add")
     public String getAddUserPage(Model model) {
         model.addAttribute("user", new User());
         return "admin/addUser";
     }
 
-    @PostMapping("/user/add")
+    @PostMapping("admin/user/add")
     public String handleAddUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "/admin/addUser";
@@ -60,14 +58,14 @@ public class AdminController {
         return "redirect:/admin/user";
     }
 
-    @GetMapping("/user/edit/{id}")
+    @GetMapping("admin/user/edit/{id}")
     public String getUpdateUserPage(@PathVariable int id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "admin/editUser";
     }
 
-    @PostMapping("/user/edit")
+    @PostMapping("admin/user/edit")
     public String handleUpdateUser(@ModelAttribute("user") User user) {
         User currentUser = userService.getUserById(user.getId());
         currentUser.setName(user.getName());
@@ -79,17 +77,12 @@ public class AdminController {
         return "redirect:/admin/user";
     }
 
-    @GetMapping("/user/delete/{id}")
+    @GetMapping("admin/user/delete/{id}")
     public String handleDeleteUser(@PathVariable int id) {
         User user = new User();
         user.setId(id);
         userService.deleteUser(user);
         return "redirect:/admin/user";
-    }
-
-    @GetMapping("/blank")
-    public String getMethodName() {
-        return "admin/index";
     }
 
 }
